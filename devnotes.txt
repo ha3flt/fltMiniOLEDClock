@@ -1,0 +1,40 @@
+
+- Enhance serial input reading
+
+- Write out at start:
+  - FMOC_DEBUG_WEB_SERVER
+
+***
+Menu:
+- Button0:
+  - short press: moves up in a set of selectable values 
+  - long press: goes up in the menu tree
+
+- Button1:
+  - short press: goes down in the menu tree and moves down in a set of selectable values
+  - long press: sets a value
+
+***
+
+-------------------------------------------------------
+?                 This help
+d [h|l]           Get/set display high/low
+e <13857>         Erase settings memory
+l [location]      Get/set device location (<=18 chars)
+s [ssid]          Get/set Wifi SSID (<=31 chars)
+o [password]      Get/set Wifi password (<=31 chars)
+r                 Reset
+w <13857>         Print Wifi status with password
+n [server]        Get/set first NTP server (N.A.)
+z [offset mins]   Get/set Time Zone offset in minutes
+t                 Get date and time
+p [port]          Get/set web server port
+1 [celsius*10]    Get/set temp. sensor 1 offset
+2 [celsius*10]    Get/set temp. sensor 2 offset
+a [meters]        Get/set altitude in meters
+h [Pa]            Get/set pressure offset in Pa
+u [percent*10]    Get/set humidity offset in percent
+m                 Memory status
+i [13857]         Print all info [with password]
+x                 Reset min/max values
+-------------------------------------------------------

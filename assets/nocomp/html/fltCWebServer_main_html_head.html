@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+		@font-face {
+			font-family: 'calottery-machine-flt';
+			src: url('CaLotteryMachineFlt-Regular.otf.woff2') format('truetype');
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-weight: 700;
+			/*letter-spacing: 0.1rem;*/
+			line-height: 1.75rem;
+		}
+
+		html {
+			font-size: clamp(0.5em, 5vw, 2em);
+			min-height: 27.5em;
+		}
+		@media (max-height: 60em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1.875rem);
+			}
+		}
+		@media (max-height: 55em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1.75rem);
+			}
+		}
+		@media (max-height: 50em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1.675rem);
+			}
+		}
+		@media (max-height: 45em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1.5rem);
+			}
+		}
+		@media (max-height: 40em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1.25rem);
+			}
+		}
+		@media (max-height: 35em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 1rem);
+			}
+		}
+		@media (max-height: 28.75em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 0.75rem);
+			}
+		}
+		@media (max-height: 22.5em) {
+			html {
+				font-size: clamp(0.5rem, 5vw, 0.67rem);
+			}
+		}
+
+		body {
+			background-color: #606060;
+			background-image: url('bkgnd-planets-1.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			color: #000;
+			text-align: center;
+		}
+
+		.my-display-red,
+		.my-display-yellow,
+		.my-display-green,
+		.my-display-blue {
+			position: relative;
+			z-index: 0;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			overflow: hidden;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+
+			width: auto;
+			height: auto;
+			padding: 1rem;
+			border-radius: 20px;
+		}
+		/*.my-display-red {
+			border: 2px solid #02000000;
+		}
+		.my-display-yellow {
+			border: 2px solid #0C0C0000;
+		}
+		.my-display-green {
+			border: 2px solid #000C0000;
+		}
+		.my-display-blue {
+			border: 2px solid #00000C00;
+		}*/
+
+		.my-display-bg-glass {
+			position: absolute;
+			inset: 0;
+			border-radius: 20px;
+			z-index: 0;
+			background: rgba(0,0,0,0.25);
+				-webkit-backdrop-filter: blur(10px) brightness(0.55);
+				backdrop-filter: blur(10px) brightness(0.55);
+				border: 1px solid rgba(0,0,0,0.125);
+			box-shadow:
+				inset 0 2px 5px rgba(255,255,255,0.15),
+				inset 0 -2px 5px rgba(0,0,0,0.25),
+				0 1px 3px rgba(0,0,0,0.25);
+		}
+
+		.my-display-numbers-red,
+		.my-display-numbers-yellow,
+		.my-display-numbers-green,
+		.my-display-numbers-blue {
+			position: relative;
+			z-index: 1;
+			font-family: 'calottery-machine-flt', monospace;
+			/*letter-spacing: 0.1rem;*/
+			-webkit-user-select: none;
+			user-select: none;
+		}
+		.my-display-numbers-red {
+			color: #FF2020;
+			text-shadow: 0 0 5px #CC0000, 0 0 10px #CC0000, 0 0 20px #CC0000, 0 0 40px #CC0000;
+		}
+		.my-display-numbers-yellow {
+			color: #C8C820;
+			text-shadow: 0 0 5px #888800, 0 0 10px #888800, 0 0 20px #888800, 0 0 40px #888800;
+		}
+		.my-display-numbers-green {
+			color: #20D020;
+			text-shadow: 0 0 5px #009900, 0 0 10px #009900, 0 0 20px #009900, 0 0 40px #009900;
+		}
+		.my-display-numbers-green {
+			color: #20D020;
+			text-shadow: 0 0 5px #009900, 0 0 10px #009900, 0 0 20px #009900, 0 0 40px #009900;
+		}
+		.my-display-numbers-blue {
+			color: #6070ff;
+			text-shadow: 0 0 5px #0000EE, 0 0 10px #0000EE, 0 0 20px #0000EE, 0 0 40px #0000EE;
+		}
+
+		.big-digits {
+			font-size: 2rem;
+		}
+		.mid-digits {
+			font-size: 1.25rem;
+		}
+		.norm-digits {
+			font-size: 1rem;
+		}
+		.small-digits {
+			font-size: 0.85rem;
+		}
+
+		.wrap {
+			max-height: 90vh;
+			overflow: hidden;
+		}
+		.clock-display {
+			width: 100%;
+			height: auto;
+		}
+		.clock-grid {
+			display: grid;
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto;
+			align-items: center;
+			/*gap: 0.25rem 1.5rem;*/
+			/*margin-top: 1rem;*/
+			white-space: pre;
+		}
+		.clock-range {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-left: 0.5rem;
+		}
+		.clock-range > div {
+			display: inline-block;
+			margin-top: -0.275rem;
+			margin-bottom: -0.275rem;
+		}
+
+		.right {
+			text-align: right;
+		}
+		.unit {
+			margin-left: 0.5rem;
+		}
+
+		.myinfo {
+			position: fixed;
+			font-size: 0.67rem;
+			font-family: Arial, sans;
+			left: 1rem;
+			bottom: 1rem;
+			padding-left: 0.25rem;
+			padding-right: 0.25rem;
+			line-height: 0.75rem;
+			border-radius: 4px;
+			max-width: 40vw;
+			word-break: break-word;
+			white-space: normal;
+			/*background-color: rgba(255,255,255,0.005);
+				-webkit-backdrop-filter: blur(3px) brightness(1.1);
+				backdrop-filter: blur(3px) brightness(1.1);
+			box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+			color: rgba(0,0,0,0.5);*/
+			background-color: rgba(255,255,255,0.01);
+				-webkit-backdrop-filter: blur(3px) brightness(1.1);
+				backdrop-filter: blur(3px) brightness(1.1);
+			color: rgba(255,255,255,0.075);
+		}
+
+		.mini-circle-btn {
+			position: absolute;
+			right: 0.5rem;
+			bottom: 0.5rem;
+			width: 1.25rem;
+			height: 1.25rem;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 50%;
+			padding: 0;
+			background: linear-gradient(145deg,
+				rgba(80, 82, 78, 0.30) 0%,
+				rgba(45, 47, 43, 0.38) 46%,
+				rgba(28, 30, 26, 0.46) 100%);
+			box-shadow:
+				inset 0 2px 4px rgba(255, 255, 255, 0.18),
+				inset 0 -2px 4px rgba(0, 0, 0, 0.55),
+				        0 1px 3px rgba(0, 0, 0, 0.55),
+						0 0 6px rgba(0, 0, 0, 0.30);
+			backdrop-filter: blur(2px);
+			-webkit-backdrop-filter: blur(2px);
+			color: rgba(96, 112, 255, 0.75);
+			font-family: Arial, sans;
+			font-size: 0.82rem;
+			font-weight: 700;
+			line-height: 1;
+			/*padding-bottom: 0.12rem;*/
+			text-shadow:
+				0 1px 2px rgba(0, 0, 0, 0.80),
+				0 -1px 0 rgba(255, 255, 255, 0.10);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			user-select: none;
+			z-index: 3;
+			-webkit-tap-highlight-color: transparent;
+		}
+		.mini-circle-btn::before {
+			content: "";
+			position: absolute;
+			inset: 0.12rem;
+			border-radius: 50%;
+			background: radial-gradient(ellipse at 40% 30%,
+				rgba(255, 255, 255, 0.12) 0%,
+				rgba(255, 255, 255, 0.04) 50%,
+				transparent 70%);
+			box-shadow:
+				inset 0 1px 2px rgba(0, 0, 0, 0.40),
+				inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+			pointer-events: none;
+		}
+		.mini-circle-btn:active {
+			transform: translateY(1px);
+			box-shadow:
+				inset 0 3px 5px rgba(0, 0, 0, 0.60),
+				inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+		}
+		.mini-circle-btn:focus-visible {
+			outline: 1px solid rgba(255, 255, 255, 0.35);
+			outline-offset: 2px;
+		}
+	</style>
+	<title>fltMiniOLEDClock</title>
+</head>
