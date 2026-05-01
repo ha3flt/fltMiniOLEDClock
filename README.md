@@ -12,6 +12,8 @@ These C/C++, HTML, CSS, etc. codes are created manually yet, and is neither gene
 
 <img src="assets/fltMiniOLEDClock_fw_003.jpg" Width=800/>
 
+<img src="assets/fltMiniOLEDClock_fw_004.jpg" Width=600/>
+
 <p>The WeMos D1 Mini test board (in a slightly tarnished shape from the frequent touching...):</p>
 <img src="assets/fltMiniOLEDClock_hw_001.jpg"/>
 
@@ -112,8 +114,7 @@ Customize them according to your environment
 
 ### 4) Sensor Calibration
 
-`src/main.cpp` sets altitude and pressure offset at startup.
-Adjust these values for your location and reference pressure.
+Altitude and pressure offset is read from the stored settings at startup. Adjust these values for your location and sensor.
 
 ## Build and Upload
 
@@ -147,16 +148,19 @@ Current button actions in firmware:
 
 After boot and Wi-Fi connection, open:
 
-- `https://<device-ip>:24443/`
+- `https://<device-ip>:<port>/`
+
+There is only one interactive element on the page: a button in the bottom right corner of the dashboard that resets the memorized minimum and maximum values of the sensors when pushed.
+
+If the route is not recognized, a simple page displaying the available sensor data will be shown instead of a 404 error page. See the list of valid routes below.
 
 Additional routes:
 
 - `/main-data.json` dynamic sensor/time JSON
-- `/clearminmax.json` simple way to reset min/max. values)) {
-- `/short.html` compact status page
+- `/clearminmax.json` resets the min/max. values
 - `/favicon.ico` please change it to yours...
 - `/bkgnd-planets-1.jpg` background picture
-- `/CaLotteryMachineFlt-Regular.otf.woff2` matrix font
+- `/CaLotteryMachineFlt-Regular.otf.woff2` a customized matrix font
 
 Note: the HTTPS certificate is embedded and self-signed, so browsers will show a security warning.
 
