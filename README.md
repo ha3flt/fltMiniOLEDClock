@@ -203,6 +203,7 @@ Quotes can be used for strings containing spaces. Yes/no questions have been avo
 
 ## Roadmap Ideas
 
+- Use the watchdog to make the device work safer (the maximal 8 seconds is way too short for this single-threaded Arduino solution without some compromise).
 - Add the battery indicator (top left side, above the date).
 - Complete menu-driven on-device configuration.
 - Add robust error handling for missing sensors and Wi-Fi reconnect cases.
