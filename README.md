@@ -193,7 +193,7 @@ Available commands:
 | i [13857] | Print all info [with password] |
 | x | Reset min/max values |
 
-Quotes can be used for strings containing spaces.
+Quotes can be used for strings containing spaces. Yes/no questions have been avoided for now.
 
 ## Known Limitations
 
