@@ -133,6 +133,8 @@ Start serial monitor:
 pio device monitor -b 115200
 ```
 
+DO NOT FORGET TO GENERATE A NEW KEY PAIR BEFORE RELEASING, AND DO NOT COMMIT AND UPLOAD IT TO GITHUB!
+
 ## Usage
 
 ### OLED and Buttons
