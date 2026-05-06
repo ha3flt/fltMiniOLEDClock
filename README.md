@@ -195,7 +195,7 @@ Available commands:
 | i [13857] | Print all info [with password] |
 | x | Reset min/max values |
 
-Quotes can be used for strings containing spaces.
+Quotes can be used for strings containing spaces. Yes/no questions have been avoided for now.
 
 ## Known Limitations
 
@@ -205,6 +205,7 @@ Quotes can be used for strings containing spaces.
 
 ## Roadmap Ideas
 
+- Use the watchdog to make the device work safer (the maximal 8 seconds is way too short for this single-threaded Arduino solution without some compromise).
 - Add the battery indicator (top left side, above the date).
 - Complete menu-driven on-device configuration.
 - Add robust error handling for missing sensors and Wi-Fi reconnect cases.
