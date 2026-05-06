@@ -17,6 +17,8 @@ These C/C++, HTML, CSS, etc. codes are created manually yet, and is neither gene
 <p>The WeMos D1 Mini test board (in a slightly tarnished shape from the frequent touching...):</p>
 <img src="assets/fltMiniOLEDClock_hw_001.jpg"/>
 
+<img src="assets/fltMiniOLEDClock_hw_002.jpg" Width=600/>
+
 - Embedded HTTPS server with dynamic dashboard data.
 - JSON endpoint for periodic browser-side refresh.
 - Serial command shell for runtime controls and diagnostics.
